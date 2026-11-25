@@ -2,8 +2,8 @@
   <title>Setor Sul, Goiânia</title>
   <defs>
     <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1a0b33"/>
-      <stop offset="1" stop-color="#0d1b4d"/>
+      <stop offset="0" stop-color="#120726"/>
+      <stop offset="1" stop-color="#0a0418"/>
     </linearGradient>
     <filter id="brilho" x="-5%" y="-5%" width="110%" height="110%">
       <feGaussianBlur stdDeviation="2.2" result="b"/>
@@ -11,9 +11,9 @@
     </filter>
   </defs>
   <rect width="1600" height="1315" fill="url(#fundo)"/>
-  <text x="60" y="60" fill="#E6E1F5" font-size="26" font-weight="600">Setor Sul, Goiânia</text>
-  <text x="60" y="84" fill="#B388FF" font-size="14" letter-spacing="1">3416 lotes · 40 quadras</text>
-  <g id="quadras" fill="none" stroke="#B388FF" stroke-width="1.6" stroke-opacity="0.55" stroke-dasharray="7 5" stroke-linejoin="round">
+  <text x="60" y="60" fill="#F5EEFF" font-size="26" font-weight="600">Setor Sul, Goiânia</text>
+  <text x="60" y="84" fill="#C3A8E6" font-size="14" letter-spacing="1">3416 lotes · 40 quadras</text>
+  <g id="quadras" fill="none" stroke="#4D8BFF" stroke-width="1.6" stroke-opacity="0.55" stroke-dasharray="7 5" stroke-linejoin="round">
     <path d="M787.6 631.3L803.5 659.5L804.7 660.4L805.8 660.8L1078.2 714.5L1082.7 713.8L1092.3 693.4L1093.6 690.2L1095.0 685.5L1095.4 681.0L1095.2 676.6L1094.7 672.4L1093.2 667.9L1085.9 648.5L1080.7 634.9L1074.2 621.4L1065.9 608.0L1061.1 600.7L1050.8 589.4L1040.9 580.0L1034.8 574.5L1028.1 569.6L946.6 510.4L942.1 509.4L918.4 526.3L914.1 529.5L870.3 562.1L846.2 580.3L829.9 593.2L789.1 625.8L787.7 628.4Z"/>
     <path d="M858.0 274.4L859.0 276.8L867.3 294.6L1066.6 396.7L1070.2 397.8L1079.7 390.8L1094.0 380.4L1107.7 370.3L1114.3 365.5L1172.9 319.9L1178.8 315.3L1179.8 313.0L1179.9 311.0L1179.2 308.9L1177.6 306.6L1166.2 293.2L1160.6 286.6L1156.9 282.2L1149.3 273.3L1135.1 256.7L1129.6 250.4L1123.2 243.4L1115.9 237.2L1109.2 231.5L1099.2 226.8L1091.9 224.2L1052.0 212.1L1040.8 208.7L966.9 187.4L964.5 187.9L958.2 190.5L884.0 230.6L880.6 233.2L876.6 236.7L872.9 240.0L869.7 243.4L866.9 247.6L864.5 252.0L862.3 256.7L860.7 260.6L859.5 265.2L858.6 270.5Z"/>
     <path d="M825.1 469.2L827.6 472.9L838.7 474.7L864.6 479.0L880.2 481.6L945.4 492.4L969.2 474.8L1027.3 430.5L1055.6 408.6L1060.0 405.1L1061.0 400.7L1050.0 386.6L1019.4 347.5L1013.9 340.7L1007.9 335.1L999.5 329.2L991.0 324.3L983.5 321.4L975.6 319.1L864.0 300.9L857.9 303.7L851.2 306.9Z"/>
@@ -55,7 +55,7 @@
     <path d="M1201.0 315.7L1201.1 319.3L1388.5 625.6L1390.8 627.3L1436.2 606.0L1436.5 603.1L1448.2 472.7L1447.6 462.7L1447.3 459.4L1446.0 456.5L1444.1 452.9L1442.6 450.7L1411.0 407.1L1237.2 303.0L1228.9 299.4L1222.4 299.4L1216.9 302.7L1204.9 311.3L1202.6 313.7Z"/>
     <path d="M689.6 142.9L690.7 146.3L695.5 148.5L855.4 154.2L863.1 154.2L876.1 154.1L875.5 138.0L870.7 125.9L855.9 123.9L770.2 117.5L762.6 117.3L748.7 117.5L726.3 119.1L693.1 136.1L690.5 138.9L689.9 140.6Z"/>
   </g>
-  <g id="lotes" fill="#00E5FF" fill-opacity="0.05" stroke="#00E5FF" stroke-width="1" stroke-linejoin="round" filter="url(#brilho)">
+  <g id="lotes" fill="#FF4FA3" fill-opacity="0.05" stroke="#FF4FA3" stroke-width="1" stroke-linejoin="round" filter="url(#brilho)">
     <path d="M999.6 553.5L1007.1 556.8L997.4 575.3L990.8 572.0L982.7 568.2L990.6 549.6Z"/>
     <path d="M881.8 274.2L889.0 275.4L885.4 297.5L877.5 296.2L881.1 277.5Z"/>
     <path d="M1046.9 332.3L1051.5 338.5L1033.1 352.3L1028.0 345.5Z"/>
@@ -3473,7 +3473,7 @@
     <path d="M944.8 215.9L938.3 219.5L930.7 205.5L937.2 202.0Z"/>
     <path d="M1018.9 1000.4L1003.4 1014.9L998.2 1009.6L1013.5 995.1Z"/>
   </g>
-  <g id="rotulos-lotes" fill="#E6E1F5" text-anchor="middle" paint-order="stroke" stroke="#1a0b33" stroke-width="2.5" stroke-linejoin="round">
+  <g id="rotulos-lotes" fill="#F5EEFF" text-anchor="middle" paint-order="stroke" stroke="#120726" stroke-width="2.5" stroke-linejoin="round">
     <text x="994.6" y="562.3" font-size="4.8" dy="0.35em">16/18</text>
     <text x="883.4" y="286.0" font-size="5.3" dy="0.35em">39</text>
     <text x="891.0" y="287.1" font-size="5.2" dy="0.35em">41</text>
@@ -5554,7 +5554,7 @@
     <text x="1046.5" y="907.5" font-size="14.0" dy="0.35em" transform="rotate(12.9 1046.5 907.5)">AREA 1</text>
     <text x="1025.0" y="936.2" font-size="14.0" dy="0.35em" transform="rotate(14.3 1025.0 936.2)">11A</text>
   </g>
-  <g id="rotulos-quadras" fill="#B388FF" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#1a0b33" stroke-width="4" stroke-linejoin="round">
+  <g id="rotulos-quadras" fill="#4D8BFF" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#120726" stroke-width="4" stroke-linejoin="round">
     <text x="964.9" y="620.0" font-size="34.0" dy="0.35em" transform="rotate(11.1 964.9 620.0)">F37</text>
     <text x="1024.3" y="278.6" font-size="34.0" dy="0.35em" transform="rotate(27.1 1024.3 278.6)">F36</text>
     <text x="929.7" y="395.0" font-size="34.0" dy="0.35em" transform="rotate(9.3 929.7 395.0)">F35</text>
@@ -5596,17 +5596,17 @@
     <text x="1334.2" y="443.0" font-size="34.0" dy="0.35em" transform="rotate(58.5 1334.2 443.0)">Q39A</text>
     <text x="830.3" y="139.6" font-size="11.0" dy="0.35em" transform="rotate(2.0 830.3 139.6)">Q36A</text>
   </g>
-  <g id="escala" fill="#E6E1F5" font-size="13">
-    <rect x="60" y="1246" width="147.1" height="7" fill="#E6E1F5" stroke="#E6E1F5"/>
-    <rect x="207.1" y="1246" width="147.1" height="7" fill="none" stroke="#E6E1F5"/>
+  <g id="escala" fill="#FFB86B" font-size="13">
+    <rect x="60" y="1246" width="147.1" height="7" fill="#FFB86B" stroke="#FFB86B"/>
+    <rect x="207.1" y="1246" width="147.1" height="7" fill="none" stroke="#FFB86B"/>
       <text x="60.0" y="1270" text-anchor="middle">0</text>
       <text x="207.1" y="1270" text-anchor="middle">250</text>
       <text x="354.2" y="1270" text-anchor="middle">500 m</text>
   </g>
   <g id="rosa-dos-ventos" transform="rotate(-63.83 1500 1250)">
-    <circle cx="1500" cy="1250" r="32" fill="none" stroke="#B388FF" stroke-opacity="0.5"/>
-    <path d="M1500 1222L1509 1256L1500 1251L1491 1256Z" fill="#00E5FF" fill-opacity="0.85"/>
-    <path d="M1500 1278L1506 1256L1500 1251L1494 1256Z" fill="#B388FF" fill-opacity="0.45"/>
-    <text x="1500" y="1212" text-anchor="middle" fill="#E6E1F5" font-size="15" font-weight="700">N</text>
+    <circle cx="1500" cy="1250" r="32" fill="none" stroke="#FFB86B" stroke-opacity="0.5"/>
+    <path d="M1500 1222L1509 1256L1500 1251L1491 1256Z" fill="#FFB86B" fill-opacity="0.85"/>
+    <path d="M1500 1278L1506 1256L1500 1251L1494 1256Z" fill="#FFB86B" fill-opacity="0.45"/>
+    <text x="1500" y="1212" text-anchor="middle" fill="#FFB86B" font-size="15" font-weight="700">N</text>
   </g>
 </svg>

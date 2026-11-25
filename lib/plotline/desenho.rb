@@ -110,7 +110,7 @@ module Plotline
       sub = "#{@lotes.size} lotes"
       sub += " · #{quadras.size} quadras" unless quadras.empty?
       %(  <text x="#{MARGEM}" y="#{MARGEM}" fill="#{Estilo::TEXTO}" font-size="26" font-weight="600">#{esc(@titulo)}</text>\n) +
-        %(  <text x="#{MARGEM}" y="#{MARGEM + 24}" fill="#{Estilo::QUADRA}" font-size="14" letter-spacing="1">#{esc(sub)}</text>\n)
+        %(  <text x="#{MARGEM}" y="#{MARGEM + 24}" fill="#{Estilo::TEXTO_SECUNDARIO}" font-size="14" letter-spacing="1">#{esc(sub)}</text>\n)
     end
 
     # ── quadras ────────────────────────────────────────────────────────────────
@@ -233,9 +233,9 @@ module Plotline
         %(    <text x="#{format('%.1f', x0 + dx)}" y="#{y0 + 24}" text-anchor="middle">#{esc(rot)}</text>\n)
       end.join
       <<~SVG.gsub(/^(?=.)/, "  ")
-        <g id="escala" fill="#{Estilo::TEXTO}" font-size="13">
-          <rect x="#{x0}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="#{Estilo::TEXTO}" stroke="#{Estilo::TEXTO}"/>
-          <rect x="#{format('%.1f', x0 + meio)}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="none" stroke="#{Estilo::TEXTO}"/>
+        <g id="escala" fill="#{Estilo::AMBAR}" font-size="13">
+          <rect x="#{x0}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="#{Estilo::AMBAR}" stroke="#{Estilo::AMBAR}"/>
+          <rect x="#{format('%.1f', x0 + meio)}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="none" stroke="#{Estilo::AMBAR}"/>
         #{marcas}</g>
       SVG
     end
@@ -249,10 +249,10 @@ module Plotline
       r = 32
       <<~SVG.gsub(/^(?=.)/, "  ")
         <g id="rosa-dos-ventos" transform="rotate(#{format('%.2f', -@giro)} #{cx} #{cy})">
-          <circle cx="#{cx}" cy="#{cy}" r="#{r}" fill="none" stroke="#{Estilo::QUADRA}" stroke-opacity="0.5"/>
-          <path d="M#{cx} #{cy - r + 4}L#{cx + 9} #{cy + 6}L#{cx} #{cy + 1}L#{cx - 9} #{cy + 6}Z" fill="#{Estilo::LOTE}" fill-opacity="0.85"/>
-          <path d="M#{cx} #{cy + r - 4}L#{cx + 6} #{cy + 6}L#{cx} #{cy + 1}L#{cx - 6} #{cy + 6}Z" fill="#{Estilo::QUADRA}" fill-opacity="0.45"/>
-          <text x="#{cx}" y="#{cy - r - 6}" text-anchor="middle" fill="#{Estilo::TEXTO}" font-size="15" font-weight="700">N</text>
+          <circle cx="#{cx}" cy="#{cy}" r="#{r}" fill="none" stroke="#{Estilo::AMBAR}" stroke-opacity="0.5"/>
+          <path d="M#{cx} #{cy - r + 4}L#{cx + 9} #{cy + 6}L#{cx} #{cy + 1}L#{cx - 9} #{cy + 6}Z" fill="#{Estilo::AMBAR}" fill-opacity="0.85"/>
+          <path d="M#{cx} #{cy + r - 4}L#{cx + 6} #{cy + 6}L#{cx} #{cy + 1}L#{cx - 6} #{cy + 6}Z" fill="#{Estilo::AMBAR}" fill-opacity="0.45"/>
+          <text x="#{cx}" y="#{cy - r - 6}" text-anchor="middle" fill="#{Estilo::AMBAR}" font-size="15" font-weight="700">N</text>
         </g>
       SVG
     end

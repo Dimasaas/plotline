@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/Dimasaas/plotline/actions/workflows/ci.yml/badge.svg)](https://github.com/Dimasaas/plotline/actions/workflows/ci.yml)
 ![Ruby](https://img.shields.io/badge/ruby-3.2%20%7C%203.3-CC342D?logo=ruby&logoColor=white)
-![Dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-00E5FF)
-![Licença](https://img.shields.io/badge/licença-PolyForm%20Noncommercial-7C4DFF)
+![Dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-4D8BFF)
+![Licença](https://img.shields.io/badge/licença-PolyForm%20Noncommercial-FF4FA3)
 
 # Plotline
 

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="Plotline: planta de loteamento em SVG a partir de GeoJSON">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1a0b33"/>
-      <stop offset="1" stop-color="#0d1b4d"/>
+      <stop offset="0" stop-color="#120726"/>
+      <stop offset="1" stop-color="#0a0418"/>
     </linearGradient>
     <filter id="b" x="-10%" y="-10%" width="120%" height="120%">
       <feGaussianBlur stdDeviation="2" result="x"/>
@@ -10,7 +10,7 @@
     </filter>
   </defs>
   <style>
-    .l { fill: #00E5FF; fill-opacity: .06; stroke: #00E5FF; stroke-width: 1; animation: pulso 5s ease-in-out infinite; }
+    .l { fill: #FF4FA3; fill-opacity: .06; stroke: #FF4FA3; stroke-width: 1; animation: pulso 5s ease-in-out infinite; }
     .d1 { animation-delay: -1s; } .d2 { animation-delay: -2s; } .d3 { animation-delay: -3s; } .d4 { animation-delay: -4s; }
     @keyframes pulso { 0%, 100% { stroke-opacity: .35; fill-opacity: .03; } 50% { stroke-opacity: 1; fill-opacity: .16; } }
     .t { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
@@ -310,16 +310,16 @@
 <rect class="l d3" x="1170" y="274" width="15" height="15" rx="1.5"/>
   </g>
   <rect x="0" y="0" width="760" height="320" fill="url(#g)" opacity=".82"/>
-  <text class="t" x="64" y="150" fill="#E6E1F5" font-size="68" font-weight="700" letter-spacing="-1">Plotline</text>
-  <text class="t" x="66" y="196" fill="#B388FF" font-size="24">planta de loteamento em SVG a partir de GeoJSON</text>
-  <text class="t" x="66" y="236" fill="#00E5FF" font-size="16" letter-spacing="2">RUBY · SÓ STDLIB · ZERO DEPENDÊNCIAS</text>
+  <text class="t" x="64" y="150" fill="#F5EEFF" font-size="68" font-weight="700" letter-spacing="-1">Plotline</text>
+  <text class="t" x="66" y="196" fill="#C3A8E6" font-size="24">planta de loteamento em SVG a partir de GeoJSON</text>
+  <text class="t" x="66" y="236" fill="#FF4FA3" font-size="16" letter-spacing="2">RUBY · SÓ STDLIB · ZERO DEPENDÊNCIAS</text>
   <g class="rosa">
-    <circle cx="1180" cy="90" r="30" fill="none" stroke="#B388FF" stroke-opacity=".6"/>
-    <path d="M1180 64L1188 96L1180 91L1172 96Z" fill="#00E5FF"/>
-    <text class="t" x="1180" y="52" text-anchor="middle" fill="#E6E1F5" font-size="14" font-weight="700">N</text>
+    <circle cx="1180" cy="90" r="30" fill="none" stroke="#FFB86B" stroke-opacity=".6"/>
+    <path d="M1180 64L1188 96L1180 91L1172 96Z" fill="#FFB86B"/>
+    <text class="t" x="1180" y="52" text-anchor="middle" fill="#FFB86B" font-size="14" font-weight="700">N</text>
   </g>
-  <g class="t" fill="#E6E1F5" font-size="12">
-    <rect x="1040" y="270" width="60" height="5" fill="#E6E1F5"/><rect x="1100" y="270" width="60" height="5" fill="none" stroke="#E6E1F5"/>
+  <g class="t" fill="#FFB86B" font-size="12">
+    <rect x="1040" y="270" width="60" height="5" fill="#FFB86B"/><rect x="1100" y="270" width="60" height="5" fill="none" stroke="#FFB86B"/>
     <text x="1040" y="292">0</text><text x="1160" y="292" text-anchor="middle">200 m</text>
   </g>
 </svg>

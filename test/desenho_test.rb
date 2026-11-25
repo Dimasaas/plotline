@@ -13,9 +13,9 @@ class DesenhoTest < Minitest::Test
 
   def test_usa_as_cores_e_o_degrade_pedidos
     s = svg
-    assert_includes s, "#1a0b33"
-    assert_includes s, "#0d1b4d"
-    assert_includes s, "#00E5FF"
+    assert_includes s, "#120726"
+    assert_includes s, "#0a0418"
+    assert_includes s, "#FF4FA3"
   end
 
   def test_respeita_a_largura_pedida
