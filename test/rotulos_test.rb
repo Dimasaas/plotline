@@ -54,4 +54,11 @@ class RotulosTest < Minitest::Test
     transform = textos(d, "rotulos-quadras").first.attributes["transform"]
     assert_match(/rotate\(-?25\.0 /, transform)
   end
+
+  def test_quadra_com_letra_nao_ganha_prefixo_q
+    json = JSON.parse(Suporte.grade(quadras: [1, 1]))
+    json["features"].each { |f| f["properties"]["quadra"] = "F47" }
+    d = doc(JSON.generate(json))
+    assert_equal ["F47"], textos(d, "rotulos-quadras").map(&:text)
+  end
 end
