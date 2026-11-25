@@ -9,6 +9,10 @@ opcoes = {}
 parser = OptionParser.new do |o|
   o.banner = "Uso: planta-svg [opções] entrada.geojson > saida.svg   (ou '-' para ler da entrada padrão)"
   o.on("--largura N", Integer, "largura do SVG em unidades (padrão 1600)") { |n| opcoes[:largura] = n }
+  o.on("--titulo TEXTO", "título no topo da planta") { |t| opcoes[:titulo] = t }
+  o.on("--giro GRAUS", Float, "força o giro (anti-horário) em vez de escolher o melhor") { |g| opcoes[:giro] = g }
+  o.on("--sem-rotacao", "não gira a planta (mantém o norte para cima)") { opcoes[:giro] = 0.0 }
+  o.on("--sem-rotulos", "não escreve números de lote nem de quadra") { opcoes[:rotulos] = false }
   o.on("-v", "--version", "mostra a versão") do
     puts PlantaSvg::VERSION
     exit

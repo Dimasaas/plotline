@@ -14,4 +14,6 @@ module PlantaSvg
 end
 
 require_relative "planta_svg/geojson"
+require_relative "planta_svg/rotacao"
+require_relative "planta_svg/escala"
 require_relative "planta_svg/desenho"
