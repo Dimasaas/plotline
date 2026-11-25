@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = "Projeta lotes em metros, escolhe a rotação que deixa a planta deitada, " \
                   "põe rótulos, barra de escala e rosa dos ventos e devolve um SVG."
   s.homepage    = "https://github.com/Dimasaas/planta-svg"
-  s.license     = "MIT"
+  s.license     = "PolyForm-Noncommercial-1.0.0"
   s.required_ruby_version = ">= 3.2"
 
   s.files       = Dir["lib/**/*.rb", "bin/*", "LICENSE", "README.md"]
