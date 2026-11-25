@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+$LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
+require "optparse"
+require "json"
+require "planta_svg"
+require "planta_svg/goiania"
+
+saida = nil
+parser = OptionParser.new do |o|
+  o.banner = "Uso: baixar-goiania [opções] \"<bairro>\"   (ex.: baixar-goiania \"Setor Sul\")"
+  o.on("-o", "--saida ARQ", "arquivo de saída (padrão: <bairro>.geojson; '-' escreve na tela)") { |a| saida = a }
+  o.on("-h", "--help", "ajuda") do
+    puts o
+    exit
+  end
+end
+
+begin
+  parser.parse!
+  nome = ARGV.join(" ").strip
+  if nome.empty?
+    warn parser
+    exit 2
+  end
+
+  fonte = PlantaSvg::Goiania.new
+  dados = fonte.geojson(nome)
+  json = JSON.generate(dados)
+  saida ||= "#{PlantaSvg::Goiania.normalizar(fonte.bairro_encontrado).gsub(/[^a-z0-9]+/, '-')}.geojson"
+  if saida == "-"
+    puts json
+  else
+    File.write(saida, json)
+    quadras = dados["features"].map { |f| f["properties"]["quadra"] }.uniq.size
+    warn "#{fonte.bairro_encontrado}: #{dados['features'].size} lotes em #{quadras} quadras -> #{saida}"
+  end
+rescue PlantaSvg::Erro, OptionParser::ParseError, SystemCallError => e
+  warn "baixar-goiania: #{e.message}"
+  exit 1
+end

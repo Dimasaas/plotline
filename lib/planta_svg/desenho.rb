@@ -129,7 +129,7 @@ module PlantaSvg
         centros = @figuras.select { |f| f[:lote].quadra == nome }.map { |f| Geometria.centroide(f[:pts]) }
         cx, cy = ponto(*Geometria.media(centros))
         ret = Rotacao.menor_retangulo(pts)
-        texto = "Q#{nome}"
+        texto = nome.match?(/\A\d/) ? "Q#{nome}" : nome
         corpo = [[ret.altura * @escala * 0.32, 34.0].min, 11.0].max
         corpo = [corpo, ret.largura * @escala * 0.9 / (texto.size * LARGURA_CARACTERE)].min
         { texto: texto, x: cx, y: cy, graus: ret.graus, corpo: corpo, pts: pts }
