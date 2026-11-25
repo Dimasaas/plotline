@@ -24,8 +24,9 @@ class DesenhoTest < Minitest::Test
 
   def test_proporcao_do_desenho_bate_com_a_do_terreno
     # grade 2x2 de quadras, 4x2 lotes de 12x30 m, rua de 14 m: 110 m x 134 m.
-    h = svg(largura: 1000)[/viewBox="0 0 1000 (\d+)"/, 1].to_f
-    assert_in_delta((880 * (134.0 / 110.0)) + 120, h, 2.0)
+    h = svg(largura: 1000, giro: 0.0)[/viewBox="0 0 1000 (\d+)"/, 1].to_f
+    esperado = (880 * (134.0 / 110.0)) + PlantaSvg::Desenho::MARGEM + PlantaSvg::Desenho::RODAPE
+    assert_in_delta esperado, h, 2.0
   end
 
   def test_sem_lotes_levanta_erro
