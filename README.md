@@ -1,9 +1,9 @@
 <p align="center"><img src="docs/banner.svg" alt="Plotline" width="100%"></p>
 
 [![CI](https://github.com/Dimasaas/plotline/actions/workflows/ci.yml/badge.svg)](https://github.com/Dimasaas/plotline/actions/workflows/ci.yml)
-![Ruby](https://img.shields.io/badge/ruby-3.2%20%7C%203.3-CC342D?logo=ruby&logoColor=white)
-![Dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-4D8BFF)
-![Licença](https://img.shields.io/badge/licença-PolyForm%20Noncommercial-FF4FA3)
+![Ruby](https://img.shields.io/badge/ruby-3.2%20%7C%203.3-D9482B?labelColor=1B2B48&logo=ruby&logoColor=F3EFE4)
+![Dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-5B7553?labelColor=1B2B48)
+![Licença](https://img.shields.io/badge/licença-PolyForm%20Noncommercial-1B2B48?labelColor=6B6B6B)
 
 # Plotline
 

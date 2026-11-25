@@ -11,11 +11,11 @@ class DesenhoTest < Minitest::Test
     assert_equal 32, REXML::XPath.match(doc, "//g[@id='lotes']/path").size
   end
 
-  def test_usa_as_cores_e_o_degrade_pedidos
+  def test_usa_a_paleta_de_planta_de_agrimensor
     s = svg
-    assert_includes s, "#120726"
-    assert_includes s, "#0a0418"
-    assert_includes s, "#FF4FA3"
+    assert_includes s, "#F3EFE4"
+    assert_includes s, "#1B2B48"
+    assert_includes s, "#D9482B"
   end
 
   def test_respeita_a_largura_pedida

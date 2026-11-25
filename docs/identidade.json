@@ -1,0 +1,13 @@
+{
+  "nome": "plotline",
+  "paleta": {
+    "fundo": "#F3EFE4",
+    "primaria": "#1B2B48",
+    "secundaria": "#5B7553",
+    "texto": "#1B2B48",
+    "acento": "#D9482B"
+  },
+  "fonte": "Georgia, serif / 'IBM Plex Mono', Consolas, monospace",
+  "logo": "docs/logo.svg",
+  "conceito": "Planta de agrimensor: papel quadriculado, tinta azul-marinho e um marco vermelho de levantamento sobre o lote."
+}

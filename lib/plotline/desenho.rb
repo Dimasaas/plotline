@@ -18,7 +18,7 @@ module Plotline
   class Desenho
     MARGEM = 60
     TOPO_TITULO = 56
-    RODAPE = 130
+    RODAPE = 150
     LARGURA_CARACTERE = 0.6   # largura média de um caractere, em múltiplos do corpo
     CORPO_MAX_LOTE = 14.0
     CORPO_MIN_LOTE = 4.5
@@ -74,23 +74,25 @@ module Plotline
 
     def montar
       <<~SVG
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 #{@largura} #{@altura}" width="#{@largura}" height="#{@altura}" font-family="#{Estilo::FONTE}">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 #{@largura} #{@altura}" width="#{@largura}" height="#{@altura}" font-family="#{Estilo::FONTE_TECNICA}">
           <title>#{esc(@titulo || 'Planta de loteamento')}</title>
           <defs>
-            <linearGradient id="fundo" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#{Estilo::FUNDO_DE}"/>
-              <stop offset="1" stop-color="#{Estilo::FUNDO_PARA}"/>
-            </linearGradient>
-            <filter id="brilho" x="-5%" y="-5%" width="110%" height="110%">
-              <feGaussianBlur stdDeviation="2.2" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
+            <pattern id="prancha-fina" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0H0V40" fill="none" stroke="#{Estilo::GRAFITE}" stroke-opacity="0.14" stroke-width="0.6"/>
+            </pattern>
+            <pattern id="prancha-grossa" width="200" height="200" patternUnits="userSpaceOnUse">
+              <path d="M200 0H0V200" fill="none" stroke="#{Estilo::GRAFITE}" stroke-opacity="0.22" stroke-width="0.9"/>
+            </pattern>
           </defs>
-          <rect width="#{@largura}" height="#{@altura}" fill="url(#fundo)"/>
-        #{titulo_svg}#{quadras_svg}  <g id="lotes" fill="#{Estilo::LOTE}" fill-opacity="0.05" stroke="#{Estilo::LOTE}" stroke-width="1" stroke-linejoin="round" filter="url(#brilho)">
+          <rect width="#{@largura}" height="#{@altura}" fill="#{Estilo::PAPEL}"/>
+          <rect width="#{@largura}" height="#{@altura}" fill="url(#prancha-fina)"/>
+          <rect width="#{@largura}" height="#{@altura}" fill="url(#prancha-grossa)"/>
+          <rect x="18" y="18" width="#{@largura - 36}" height="#{@altura - 36}" fill="none" stroke="#{Estilo::TINTA}" stroke-width="2.5"/>
+          <rect x="26" y="26" width="#{@largura - 52}" height="#{@altura - 52}" fill="none" stroke="#{Estilo::TINTA}" stroke-width="0.8"/>
+        #{titulo_svg}#{quadras_svg}  <g id="lotes" fill="#{Estilo::MUSGO}" fill-opacity="0.2" stroke="#{Estilo::TINTA}" stroke-width="0.8" stroke-linejoin="round">
         #{caminhos_dos_lotes}
           </g>
-        #{rotulos_svg}#{escala_svg}#{rosa_svg}</svg>
+        #{rotulos_svg}#{cota_svg}#{carimbo_svg}#{escala_svg}#{rosa_svg}</svg>
       SVG
     end
 
@@ -109,8 +111,8 @@ module Plotline
 
       sub = "#{@lotes.size} lotes"
       sub += " · #{quadras.size} quadras" unless quadras.empty?
-      %(  <text x="#{MARGEM}" y="#{MARGEM}" fill="#{Estilo::TEXTO}" font-size="26" font-weight="600">#{esc(@titulo)}</text>\n) +
-        %(  <text x="#{MARGEM}" y="#{MARGEM + 24}" fill="#{Estilo::TEXTO_SECUNDARIO}" font-size="14" letter-spacing="1">#{esc(sub)}</text>\n)
+      %(  <text x="#{MARGEM}" y="#{MARGEM}" fill="#{Estilo::TINTA}" font-family="#{Estilo::FONTE_TITULO}" font-size="28" font-weight="700">#{esc(@titulo)}</text>\n) +
+        %(  <text x="#{MARGEM}" y="#{MARGEM + 24}" fill="#{Estilo::GRAFITE}" font-size="14" letter-spacing="1">#{esc(sub)}</text>\n)
     end
 
     # ── quadras ────────────────────────────────────────────────────────────────
@@ -147,7 +149,7 @@ module Plotline
       end.compact.join
       return "" if contornos.empty?
 
-      %(  <g id="quadras" fill="none" stroke="#{Estilo::QUADRA}" stroke-width="1.6" stroke-opacity="0.55" stroke-dasharray="7 5" stroke-linejoin="round">\n#{contornos}  </g>\n)
+      %(  <g id="quadras" fill="none" stroke="#{Estilo::LEVANTAMENTO}" stroke-width="1.8" stroke-dasharray="9 4 2 4" stroke-linejoin="round">\n#{contornos}  </g>\n)
     end
 
     # ── rótulos ────────────────────────────────────────────────────────────────
@@ -157,10 +159,10 @@ module Plotline
 
       lotes = @figuras.filter_map { |f| rotulo_de_lote(f) }
       lotes = lotes.reject { |r| debaixo_de_quadra?(r) }
-      saida = +%(  <g id="rotulos-lotes" fill="#{Estilo::TEXTO}" text-anchor="middle" paint-order="stroke" stroke="#{Estilo::FUNDO_DE}" stroke-width="2.5" stroke-linejoin="round">\n)
+      saida = +%(  <g id="rotulos-lotes" fill="#{Estilo::GRAFITE}" text-anchor="middle" paint-order="stroke" stroke="#{Estilo::PAPEL}" stroke-width="2.5" stroke-linejoin="round">\n)
       lotes.each { |r| saida << texto_svg(r) }
       saida << "  </g>\n"
-      saida << %(  <g id="rotulos-quadras" fill="#{Estilo::QUADRA}" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#{Estilo::FUNDO_DE}" stroke-width="4" stroke-linejoin="round">\n)
+      saida << %(  <g id="rotulos-quadras" fill="#{Estilo::TINTA}" text-anchor="middle" font-weight="700" paint-order="stroke" stroke="#{Estilo::PAPEL}" stroke-width="4" stroke-linejoin="round">\n)
       rotulos_de_quadra.each { |r| saida << texto_svg(r) }
       saida << "  </g>\n"
     end
@@ -220,6 +222,54 @@ module Plotline
       end
     end
 
+    # Cota da largura do terreno (no sentido da planta girada), abaixo do mapa.
+    def cota_svg
+      y = (@topo + @mapa_alt).round + 18
+      x0 = MARGEM
+      x1 = (MARGEM + (@larg_m * @escala)).round(1)
+      metros = Escala.rotulo(@larg_m.round).tr(".", ",")
+      <<~SVG.gsub(/^(?=.)/, "  ")
+        <g id="cota" stroke="#{Estilo::LEVANTAMENTO}" stroke-width="1.2" fill="none">
+          <path d="M#{x0} #{y}H#{x1}M#{x0} #{y - 6}V#{y + 6}M#{x1} #{y - 6}V#{y + 6}"/>
+          <path d="M#{x0} #{y}l9 -3.5v7zM#{x1} #{y}l-9 -3.5v7z" fill="#{Estilo::LEVANTAMENTO}" stroke="none"/>
+          <text x="#{format('%.1f', (x0 + x1) / 2)}" y="#{y + 20}" text-anchor="middle" fill="#{Estilo::TINTA}" stroke="none" font-size="12">#{esc(metros)}</text>
+        </g>
+      SVG
+    end
+
+    # Carimbo de prancha técnica no rodapé, entre a escala e a rosa dos ventos.
+    def carimbo_svg
+      x0 = (@largura * 0.42).round
+      x1 = @largura - MARGEM - 110
+      return "" if x1 - x0 < 300
+
+      y0 = (@topo + @mapa_alt).round + 52
+      larg = x1 - x0
+      alt = 66
+      meio = x0 + (larg * 0.62).round
+      sub = "#{@lotes.size} lotes"
+      sub += " · #{quadras.size} quadras" unless quadras.empty?
+      nome = @titulo || "Planta de loteamento"
+      <<~SVG.gsub(/^(?=.)/, "  ")
+        <g id="carimbo" fill="none" stroke="#{Estilo::TINTA}" stroke-width="1.2">
+          <rect x="#{x0}" y="#{y0}" width="#{larg}" height="#{alt}"/>
+          <path d="M#{meio} #{y0}V#{y0 + alt}M#{x0} #{y0 + 36}H#{x1}"/>
+          <g stroke="none" fill="#{Estilo::GRAFITE}" font-size="10" letter-spacing="1">
+            <text x="#{x0 + 8}" y="#{y0 + 14}">PRANCHA</text>
+            <text x="#{meio + 8}" y="#{y0 + 14}">FOLHA</text>
+            <text x="#{x0 + 8}" y="#{y0 + 50}">LEVANTAMENTO</text>
+            <text x="#{meio + 8}" y="#{y0 + 50}">GIRO</text>
+          </g>
+          <g stroke="none" fill="#{Estilo::TINTA}">
+            <text x="#{x0 + 8}" y="#{y0 + 30}" font-family="#{Estilo::FONTE_TITULO}" font-size="15" font-weight="700">#{esc(nome)}</text>
+            <text x="#{meio + 8}" y="#{y0 + 30}" font-size="13">01 / 01</text>
+            <text x="#{x0 + 8}" y="#{y0 + 62}" font-size="12">#{esc(sub)}</text>
+            <text x="#{meio + 8}" y="#{y0 + 62}" font-size="12">#{esc(format('%.1f', @giro))}°</text>
+          </g>
+        </g>
+      SVG
+    end
+
     # ── escala e rosa dos ventos ───────────────────────────────────────────────
 
     def escala_svg
@@ -230,12 +280,13 @@ module Plotline
       meio = comprimento / 2
       ticks = [[0, "0"], [meio, Escala.formatar(valor / 2.0)], [comprimento, Escala.rotulo(valor)]]
       marcas = ticks.map do |dx, rot|
-        %(    <text x="#{format('%.1f', x0 + dx)}" y="#{y0 + 24}" text-anchor="middle">#{esc(rot)}</text>\n)
+        %(    <text x="#{format('%.1f', x0 + dx)}" y="#{y0 + 24}" text-anchor="middle">#{esc(rot)}</text>
+)
       end.join
       <<~SVG.gsub(/^(?=.)/, "  ")
-        <g id="escala" fill="#{Estilo::AMBAR}" font-size="13">
-          <rect x="#{x0}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="#{Estilo::AMBAR}" stroke="#{Estilo::AMBAR}"/>
-          <rect x="#{format('%.1f', x0 + meio)}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="none" stroke="#{Estilo::AMBAR}"/>
+        <g id="escala" fill="#{Estilo::TINTA}" font-size="13">
+          <rect x="#{x0}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="#{Estilo::TINTA}" stroke="#{Estilo::TINTA}"/>
+          <rect x="#{format('%.1f', x0 + meio)}" y="#{y0}" width="#{format('%.1f', meio)}" height="7" fill="#{Estilo::PAPEL}" stroke="#{Estilo::TINTA}"/>
         #{marcas}</g>
       SVG
     end
@@ -249,10 +300,12 @@ module Plotline
       r = 32
       <<~SVG.gsub(/^(?=.)/, "  ")
         <g id="rosa-dos-ventos" transform="rotate(#{format('%.2f', -@giro)} #{cx} #{cy})">
-          <circle cx="#{cx}" cy="#{cy}" r="#{r}" fill="none" stroke="#{Estilo::AMBAR}" stroke-opacity="0.5"/>
-          <path d="M#{cx} #{cy - r + 4}L#{cx + 9} #{cy + 6}L#{cx} #{cy + 1}L#{cx - 9} #{cy + 6}Z" fill="#{Estilo::AMBAR}" fill-opacity="0.85"/>
-          <path d="M#{cx} #{cy + r - 4}L#{cx + 6} #{cy + 6}L#{cx} #{cy + 1}L#{cx - 6} #{cy + 6}Z" fill="#{Estilo::AMBAR}" fill-opacity="0.45"/>
-          <text x="#{cx}" y="#{cy - r - 6}" text-anchor="middle" fill="#{Estilo::AMBAR}" font-size="15" font-weight="700">N</text>
+          <circle cx="#{cx}" cy="#{cy}" r="#{r}" fill="none" stroke="#{Estilo::TINTA}" stroke-width="1.2"/>
+          <circle cx="#{cx}" cy="#{cy}" r="#{r - 7}" fill="none" stroke="#{Estilo::GRAFITE}" stroke-width="0.8"/>
+          <path d="M#{cx - r - 6} #{cy}H#{cx + r + 6}M#{cx} #{cy - r}V#{cy + r + 6}" stroke="#{Estilo::TINTA}" stroke-width="0.8"/>
+          <path d="M#{cx} #{cy - r + 2}L#{cx + 8} #{cy + 4}L#{cx} #{cy}L#{cx - 8} #{cy + 4}Z" fill="#{Estilo::LEVANTAMENTO}"/>
+          <path d="M#{cx} #{cy + r - 2}L#{cx + 6} #{cy + 4}L#{cx} #{cy}L#{cx - 6} #{cy + 4}Z" fill="#{Estilo::TINTA}"/>
+          <text x="#{cx}" y="#{cy - r - 6}" text-anchor="middle" fill="#{Estilo::TINTA}" font-size="15" font-weight="700">N</text>
         </g>
       SVG
     end

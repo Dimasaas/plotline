@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-labelledby="t">
+  <title id="t">Plotline: lote com marco de levantamento</title>
+  <rect x="8" y="8" width="240" height="240" rx="26" fill="#F3EFE4" stroke="#1B2B48" stroke-width="8"/>
+  <path d="M40 8V248M88 8V248M136 8V248M184 8V248M232 8V248M8 40H248M8 88H248M8 136H248M8 184H248M8 232H248" stroke="#6B6B6B" stroke-opacity=".18" stroke-width="1.5"/>
+  <path d="M62 150L98 66L186 84L198 178L116 202Z" fill="#5B7553" fill-opacity=".35" stroke="#1B2B48" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M80 108L142 120M92 158L152 170M142 120L152 170" stroke="#1B2B48" stroke-width="3" stroke-opacity=".6" fill="none"/>
+  <path d="M62 150L98 66L186 84L198 178L116 202Z" fill="none" stroke="#D9482B" stroke-width="3.5" stroke-dasharray="10 5 2 5"/>
+  <circle cx="186" cy="84" r="9" fill="#F3EFE4" stroke="#1B2B48" stroke-width="4"/>
+  <g transform="translate(198 178)">
+    <path d="M0 0L-13 -44H13Z" fill="#D9482B"/>
+    <circle cy="-52" r="15" fill="#D9482B" stroke="#1B2B48" stroke-width="4"/>
+    <circle cy="-52" r="5" fill="#F3EFE4"/>
+    <circle r="5" fill="#1B2B48"/>
+  </g>
+</svg>
