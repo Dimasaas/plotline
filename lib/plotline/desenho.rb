@@ -7,7 +7,7 @@ require_relative "geometria"
 require_relative "projecao"
 require_relative "rotacao"
 
-module PlantaSvg
+module Plotline
   # Recebe lotes (lng/lat) e devolve o SVG da planta.
   #
   # Opções:

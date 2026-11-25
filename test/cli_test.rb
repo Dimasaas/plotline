@@ -6,7 +6,7 @@ require "tmpdir"
 require "rbconfig"
 
 class CliTest < Minitest::Test
-  BIN = File.expand_path("../bin/planta-svg", __dir__)
+  BIN = File.expand_path("../bin/plotline", __dir__)
 
   def rodar(*args, entrada: nil)
     Open3.capture3(RbConfig.ruby, BIN, *args, stdin_data: entrada.to_s)
@@ -31,7 +31,7 @@ class CliTest < Minitest::Test
   def test_arquivo_inexistente_sai_com_erro
     _out, err, st = rodar("nao-existe.geojson")
     refute st.success?
-    assert_includes err, "planta-svg:"
+    assert_includes err, "plotline:"
   end
 
   def test_sem_argumento_mostra_uso

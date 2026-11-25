@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require_relative "planta_svg/version"
+require_relative "plotline/version"
 
 # Converte um GeoJSON de lotes em uma planta de loteamento em SVG.
-module PlantaSvg
+module Plotline
   # Erro de entrada (GeoJSON inválido, sem polígonos etc.).
   class Erro < StandardError; end
 
@@ -13,7 +13,7 @@ module PlantaSvg
   end
 end
 
-require_relative "planta_svg/geojson"
-require_relative "planta_svg/rotacao"
-require_relative "planta_svg/escala"
-require_relative "planta_svg/desenho"
+require_relative "plotline/geojson"
+require_relative "plotline/rotacao"
+require_relative "plotline/escala"
+require_relative "plotline/desenho"

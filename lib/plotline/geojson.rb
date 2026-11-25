@@ -2,7 +2,7 @@
 
 require "json"
 
-module PlantaSvg
+module Plotline
   # Um lote lido do GeoJSON: rótulos de quadra/lote e o anel externo em
   # [lng, lat], sem repetir o ponto de fechamento.
   Lote = Struct.new(:quadra, :lote, :anel, keyword_init: true)

@@ -5,7 +5,7 @@ require "net/http"
 require "uri"
 require_relative "geometria"
 
-module PlantaSvg
+module Plotline
   # Busca a geometria de lotes de um bairro no ArcGIS aberto da Prefeitura de
   # Goiânia (sem chave) e devolve um GeoJSON enxuto.
   #
@@ -18,8 +18,8 @@ module PlantaSvg
   #   1 = divisas de quadra  (id_bai -> bairro, id = id da quadra, nm_qdr = número)
   #   0 = divisas de lote    (id_qdr -> quadra, nm_lot = número)
   class Goiania
-    class FonteIndisponivel < PlantaSvg::Erro; end
-    class BairroNaoEncontrado < PlantaSvg::Erro; end
+    class FonteIndisponivel < Plotline::Erro; end
+    class BairroNaoEncontrado < Plotline::Erro; end
 
     BASE = "https://portalmapa.goiania.go.gov.br/servicogyn/rest/services/MapaServer/Feature_Base/MapServer"
     CAMADA_LOTE = 0
@@ -129,7 +129,7 @@ module PlantaSvg
         @espera.call(2**i)
       end
       # O ArcGIS responde HTTP 200 com {"error": ...} no corpo quando recusa a consulta.
-      raise PlantaSvg::Erro, "o portal recusou a consulta: #{corpo['error']['message'] || corpo['error']['code']}" if corpo["error"]
+      raise Plotline::Erro, "o portal recusou a consulta: #{corpo['error']['message'] || corpo['error']['code']}" if corpo["error"]
 
       corpo
     end

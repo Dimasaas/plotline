@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PlantaSvg
+module Plotline
   # Paleta e tipografia do SVG: fundo roxo para azul, lotes em ciano com brilho
   # leve, quadras em violeta.
   module Estilo

@@ -1,17 +1,19 @@
-<p align="center"><img src="docs/banner.svg" alt="planta-svg" width="100%"></p>
+<p align="center"><img src="docs/banner.svg" alt="Plotline" width="100%"></p>
 
-[![CI](https://github.com/Dimasaas/planta-svg/actions/workflows/ci.yml/badge.svg)](https://github.com/Dimasaas/planta-svg/actions/workflows/ci.yml)
+[![CI](https://github.com/Dimasaas/plotline/actions/workflows/ci.yml/badge.svg)](https://github.com/Dimasaas/plotline/actions/workflows/ci.yml)
 ![Ruby](https://img.shields.io/badge/ruby-3.2%20%7C%203.3-CC342D?logo=ruby&logoColor=white)
 ![Dependências](https://img.shields.io/badge/depend%C3%AAncias-zero-00E5FF)
 ![Licença](https://img.shields.io/badge/licença-PolyForm%20Noncommercial-7C4DFF)
 
-# planta-svg
+# Plotline
+
+**planta de loteamento em SVG a partir de GeoJSON**
 
 Converte um GeoJSON de lotes em uma planta de loteamento em SVG, com projeção em metros, rotação automática, rótulos, barra de escala e rosa dos ventos. Ruby, só a stdlib.
 
-<p align="center"><img src="docs/demo.svg" alt="Planta do Setor Sul, Goiânia, gerada pelo planta-svg" width="100%"></p>
+<p align="center"><img src="docs/demo.svg" alt="Planta do Setor Sul, Goiânia, gerada pelo Plotline" width="100%"></p>
 
-<sub>Demo: Setor Sul, Goiânia (3.416 lotes em 40 quadras), geometria do ArcGIS aberto da Prefeitura. Gerada com `bin/baixar-goiania "Setor Sul"` e `bin/planta-svg setor-sul.geojson --titulo "Setor Sul, Goiânia"`.</sub>
+<sub>Demo: Setor Sul, Goiânia (3.416 lotes em 40 quadras), geometria do ArcGIS aberto da Prefeitura. Gerada com `bin/plotline-goiania "Setor Sul"` e `bin/plotline setor-sul.geojson --titulo "Setor Sul, Goiânia"`.</sub>
 
 ## Por que existe
 
@@ -21,11 +23,11 @@ Plantas de loteamento costumam morrer em PDF ou em ferramentas de CAD que não r
 
 ```mermaid
 flowchart LR
-    A[(ArcGIS aberto\nPrefeitura de Goiânia)] -->|baixar-goiania| B[GeoJSON\nquadra + lote + geometria]
+    A[(ArcGIS aberto\nPrefeitura de Goiânia)] -->|plotline-goiania| B[GeoJSON\nquadra + lote + geometria]
     B -->|Geojson.ler| C[Projeção local\nem metros]
     C --> D[Rotação pelo menor\nretângulo envolvente]
     D --> E[Rótulos, escala\ne rosa dos ventos]
-    E -->|planta-svg| F[/SVG/]
+    E -->|plotline| F[/SVG/]
 ```
 
 ## Uso
@@ -33,16 +35,16 @@ flowchart LR
 Sem dependências: basta ter Ruby 3.2 ou mais novo.
 
 ```sh
-git clone https://github.com/Dimasaas/planta-svg && cd planta-svg
+git clone https://github.com/Dimasaas/plotline && cd plotline
 
 # 1) buscar a geometria de um bairro (grava setor-sul.geojson)
-bin/baixar-goiania "Setor Sul"
+bin/plotline-goiania "Setor Sul"
 
 # 2) desenhar
-bin/planta-svg setor-sul.geojson --titulo "Setor Sul, Goiânia" > planta.svg
+bin/plotline setor-sul.geojson --titulo "Setor Sul, Goiânia" > planta.svg
 ```
 
-### `bin/planta-svg entrada.geojson > saida.svg`
+### `bin/plotline entrada.geojson > saida.svg`
 
 Aceita `FeatureCollection`, `Feature` ou geometria solta (`Polygon`, `MultiPolygon`). Cada feição pode trazer `quadra` e `lote` nas propriedades (também entende `qd`/`lt` e `nm_qdr`/`nm_lot`). Use `-` para ler da entrada padrão.
 
@@ -54,7 +56,7 @@ Aceita `FeatureCollection`, `Feature` ou geometria solta (`Polygon`, `MultiPolyg
 | `--sem-rotacao` | mantém o norte para cima |
 | `--sem-rotulos` | sem números de lote nem de quadra |
 
-### `bin/baixar-goiania "<bairro>"`
+### `bin/plotline-goiania "<bairro>"`
 
 Busca no serviço aberto da Prefeitura de Goiânia (sem chave) o bairro, suas quadras e seus lotes, e grava um GeoJSON. O nome aceita "Setor Sul" ou só "Sul", sem diferenciar maiúsculas nem acentos; se o nome for ambíguo, lista os candidatos. Use `-o arquivo` para escolher a saída, ou `-o -` para escrever na tela.
 
@@ -99,4 +101,4 @@ rake test
 
 ## 🇺🇸 TL;DR
 
-**planta-svg** turns a GeoJSON file of land lots into an SVG subdivision plan, in pure Ruby with no gems. It projects degrees to local meters (equirectangular, with a cos φ correction for longitude), picks the rotation that gives the smallest bounding rectangle with the plan lying landscape (exact, by testing each convex hull edge), then draws lot and block labels at their centroids, a 1-2-5 scale bar and a north arrow that rotates with the plan. A second CLI, `baixar-goiania`, downloads lot geometry from the City of Goiânia's open ArcGIS service (no API key), keeping only geometry and block/lot numbers. Tests need no network. Licensed PolyForm Noncommercial 1.0.0.
+**Plotline** turns a GeoJSON file of land lots into an SVG subdivision plan, in pure Ruby with no gems. It projects degrees to local meters (equirectangular, with a cos φ correction for longitude), picks the rotation that gives the smallest bounding rectangle with the plan lying landscape (exact, by testing each convex hull edge), then draws lot and block labels at their centroids, a 1-2-5 scale bar and a north arrow that rotates with the plan. A second CLI, `plotline-goiania`, downloads lot geometry from the City of Goiânia's open ArcGIS service (no API key), keeping only geometry and block/lot numbers. Tests need no network. Licensed PolyForm Noncommercial 1.0.0.

@@ -3,7 +3,7 @@
 require_relative "suporte"
 
 class EscalaTest < Minitest::Test
-  E = PlantaSvg::Escala
+  E = Plotline::Escala
 
   def test_valores_um_dois_cinco
     {

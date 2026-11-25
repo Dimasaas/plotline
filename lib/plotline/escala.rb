@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PlantaSvg
+module Plotline
   # Valores redondos para a barra de escala: 1, 2 ou 5 vezes uma potência de 10.
   module Escala
     PASSOS = [1, 2, 5].freeze

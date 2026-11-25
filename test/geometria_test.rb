@@ -3,7 +3,7 @@
 require_relative "suporte"
 
 class GeometriaTest < Minitest::Test
-  G = PlantaSvg::Geometria
+  G = Plotline::Geometria
   RETANGULO = [[0, 0], [10, 0], [10, 4], [0, 4]].freeze
 
   def test_area_e_centroide_do_retangulo

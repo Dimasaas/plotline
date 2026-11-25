@@ -2,7 +2,7 @@
 
 require_relative "geometria"
 
-module PlantaSvg
+module Plotline
   # Menor retângulo envolvente de um conjunto de pontos.
   #   graus   - giro anti-horário (y para cima) que alinha o retângulo aos eixos,
   #             já normalizado para (-90, 90] e com o lado maior na horizontal;

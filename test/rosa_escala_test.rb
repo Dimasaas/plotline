@@ -4,7 +4,7 @@ require_relative "suporte"
 require "rexml/document"
 
 class RosaEscalaTest < Minitest::Test
-  def doc(json, **o) = REXML::Document.new(PlantaSvg.converter(json, **o))
+  def doc(json, **o) = REXML::Document.new(Plotline.converter(json, **o))
 
   def rosa(d) = REXML::XPath.first(d, "//g[@id='rosa-dos-ventos']")
 

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require_relative "suporte"
-require "planta_svg/goiania"
+require "plotline/goiania"
 
 # Nenhum teste aqui usa rede: o ArcGIS é simulado com respostas montadas à mão.
 class GoianiaTest < Minitest::Test
-  G = PlantaSvg::Goiania
+  G = Plotline::Goiania
 
   def anel(x, y) = [[x, y], [x, y + 0.0001], [x + 0.0001, y + 0.0001], [x + 0.0001, y], [x, y]]
 
@@ -108,7 +108,7 @@ class GoianiaTest < Minitest::Test
 
   def test_erro_no_corpo_com_status_200_e_levantado
     recusa = ->(_u, _p) { '{"error":{"code":400,"message":"campo inválido"}}' }
-    erro = assert_raises(PlantaSvg::Erro) { fonte(recusa).geojson("Sul") }
+    erro = assert_raises(Plotline::Erro) { fonte(recusa).geojson("Sul") }
     assert_includes erro.message, "campo inválido"
   end
 
@@ -129,7 +129,7 @@ def test_aspas_no_nome_nao_quebram_a_consulta
 end
 
   def test_saida_alimenta_o_desenhista
-    svg = PlantaSvg.converter(JSON.generate(fonte(Falso.new).geojson("Sul")))
+    svg = Plotline.converter(JSON.generate(fonte(Falso.new).geojson("Sul")))
     assert_includes svg, "</svg>"
   end
 end

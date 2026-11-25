@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PlantaSvg
+module Plotline
   # Funções puras sobre polígonos planos (listas de [x, y]).
   module Geometria
     module_function

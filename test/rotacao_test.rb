@@ -3,10 +3,10 @@
 require_relative "suporte"
 
 class RotacaoTest < Minitest::Test
-  R = PlantaSvg::Rotacao
+  R = Plotline::Rotacao
 
   def metros(json)
-    PlantaSvg::Geojson.ler(json).flat_map(&:anel).map { |lng, lat| Suporte.proj.projetar(lng, lat) }
+    Plotline::Geojson.ler(json).flat_map(&:anel).map { |lng, lat| Suporte.proj.projetar(lng, lat) }
   end
 
   def test_planta_inclinada_20_graus_volta_para_os_eixos

@@ -4,12 +4,12 @@
 $LOAD_PATH.unshift(File.expand_path("../lib", __dir__))
 require "optparse"
 require "json"
-require "planta_svg"
-require "planta_svg/goiania"
+require "plotline"
+require "plotline/goiania"
 
 saida = nil
 parser = OptionParser.new do |o|
-  o.banner = "Uso: baixar-goiania [opções] \"<bairro>\"   (ex.: baixar-goiania \"Setor Sul\")"
+  o.banner = "Uso: plotline-goiania [opções] \"<bairro>\"   (ex.: plotline-goiania \"Setor Sul\")"
   o.on("-o", "--saida ARQ", "arquivo de saída (padrão: <bairro>.geojson; '-' escreve na tela)") { |a| saida = a }
   o.on("-h", "--help", "ajuda") do
     puts o
@@ -25,10 +25,10 @@ begin
     exit 2
   end
 
-  fonte = PlantaSvg::Goiania.new
+  fonte = Plotline::Goiania.new
   dados = fonte.geojson(nome)
   json = JSON.generate(dados)
-  saida ||= "#{PlantaSvg::Goiania.normalizar(fonte.bairro_encontrado).gsub(/[^a-z0-9]+/, '-')}.geojson"
+  saida ||= "#{Plotline::Goiania.normalizar(fonte.bairro_encontrado).gsub(/[^a-z0-9]+/, '-')}.geojson"
   if saida == "-"
     puts json
   else
@@ -36,7 +36,7 @@ begin
     quadras = dados["features"].map { |f| f["properties"]["quadra"] }.uniq.size
     warn "#{fonte.bairro_encontrado}: #{dados['features'].size} lotes em #{quadras} quadras -> #{saida}"
   end
-rescue PlantaSvg::Erro, OptionParser::ParseError, SystemCallError => e
-  warn "baixar-goiania: #{e.message}"
+rescue Plotline::Erro, OptionParser::ParseError, SystemCallError => e
+  warn "plotline-goiania: #{e.message}"
   exit 1
 end

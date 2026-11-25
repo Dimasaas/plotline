@@ -4,7 +4,7 @@ require_relative "suporte"
 require "rexml/document"
 
 class RotulosTest < Minitest::Test
-  def doc(json = Suporte.grade, **o) = REXML::Document.new(PlantaSvg.converter(json, **o))
+  def doc(json = Suporte.grade, **o) = REXML::Document.new(Plotline.converter(json, **o))
 
   def textos(d, grupo) = REXML::XPath.match(d, "//g[@id='#{grupo}']/text")
 
@@ -38,7 +38,7 @@ class RotulosTest < Minitest::Test
   def test_texto_rotulo_e_escapado
     json = JSON.parse(Suporte.grade)
     json["features"][0]["properties"]["lote"] = "<A&B>"
-    svg = PlantaSvg.converter(JSON.generate(json))
+    svg = Plotline.converter(JSON.generate(json))
     assert_includes svg, "&lt;A&amp;B&gt;"
     REXML::Document.new(svg) # continua XML válido
   end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PlantaSvg
+module Plotline
   # Projeção equirretangular local: graus viram metros ao redor de um ponto de
   # referência. Um grau de latitude vale sempre o mesmo; um grau de longitude
   # encolhe com o cosseno da latitude, e é essa correção que mantém os lotes

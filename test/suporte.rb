@@ -2,7 +2,7 @@
 
 require "minitest/autorun"
 require "json"
-require "planta_svg"
+require "plotline"
 
 # Gera uma grade sintética de lotes, em metros, e a converte para GeoJSON
 # no entorno de uma coordenada qualquer. Nada aqui vem de dado real.
@@ -24,7 +24,7 @@ module Suporte
             x = (qx * (larg_q + rua_m)) + (lx * lote_m[0])
             y = (qy * (alt_q + rua_m)) + (ly * lote_m[1])
             quad = [[x, y], [x + lote_m[0], y], [x + lote_m[0], y + lote_m[1]], [x, y + lote_m[1]]]
-            quad = PlantaSvg::Geometria.girar(quad, giro)
+            quad = Plotline::Geometria.girar(quad, giro)
             anel = quad.map { |px, py| proj.inverter(px, py) }
             anel << anel.first
             feicoes << {
@@ -39,5 +39,5 @@ module Suporte
     JSON.generate("type" => "FeatureCollection", "features" => feicoes)
   end
 
-  def self.proj = PlantaSvg::Projecao.new(LAT0, LNG0)
+  def self.proj = Plotline::Projecao.new(LAT0, LNG0)
 end
